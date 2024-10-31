@@ -265,6 +265,10 @@ export class PaymentComponent implements OnInit {
     // Agregar el total del pedido
     doc.text(`Total: ${total}`, 20, offset);
 
+    // Guardar el documento PDF
     doc.save(`comprobante_${comprobanteData.tipoComprobante.toLowerCase()}_${pedidoId}.pdf`);
+
+    // Limpiar el local storage
+    localStorage.clear();
   }
 }
