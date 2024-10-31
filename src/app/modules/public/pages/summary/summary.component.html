@@ -1,0 +1,19 @@
+<!-- Resumen de Compra -->
+<div class="px-4 mt-20">
+    <div class="bg-black text-white py-4 rounded-t-lg flex justify-center items-center">
+        <h2 class="text-sm sm:text-base md:text-lg lg:text-xl roboto-bold">RESUMEN DE COMPRA</h2>
+    </div>
+    <div class="bg-neutral-300 p-4">
+        <p class="text-sm sm:text-base md:text-lg mb-2">
+            <span class="roboto-bold">PRODUCTOS TOTALES:</span> {{ calcularTotalProductos() }} unidades
+        </p>
+        <p class="text-sm sm:text-base md:text-lg mb-2">
+            <span class="roboto-bold">PRECIO TOTAL:</span> S/ {{ total.toFixed(2) }}
+        </p>
+        <div *ngFor="let producto of productos">
+            <p class="text-sm sm:text-base md:text-lg mb-2">
+                <span class="roboto-bold">PRODUCTO:</span> {{ producto.productoNombre }} 
+            </p>
+        </div>
+    </div>
+</div>

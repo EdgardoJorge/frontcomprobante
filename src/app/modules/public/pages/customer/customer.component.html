@@ -1,0 +1,280 @@
+<main class="col-start-1 col-end-13 row-start-2 row-end-3 bg-neutral-200 lg:mt-[4.5rem] sm:mt-14 mt-24 z-0">
+    <h1 class="text-xl sm:text-2xl text-center py-4 roboto-bold">RECORRIDO DE COMPRA</h1>      
+    <!-- Dibulo de la pasarela -->
+    <div class="mx-4 md:mx-10 relative flex items-center justify-center">
+        <!-- Botón -->
+        <button class="bg-transparent rounded-full transform rotate-180 absolute left-0 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+        <!-- Contenedor de círculos y lineas -->
+        <div class="flex items-center flex-grow justify-center mx-10 md:mx-20">
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500"></div>
+            
+            <!-- Línea -->
+            <div class="h-1 bg-black flex-grow max-w-[380px]"></div>
+            
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black"></div>
+            
+            <!-- Línea -->
+            <div class="h-1 bg-black flex-grow max-w-[380px]"></div>
+            
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black"></div>
+
+            <!-- Línea -->
+            <div class="h-1 bg-black flex-grow max-w-[380px]"></div>
+            
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black"></div>
+        </div>
+    </div>
+
+   <!-- Formulario del Cliente -->
+   <div class="flex flex-wrap lg:flex-nowrap mt-6 justify-between items-start mx-4 md:mx-28">
+    <!-- Sección del formulario -->
+    <div class="w-full lg:max-w-2xl px-4">
+        <h3 class="text-base sm:text-lg md:text-xl lg:text-2xl mt-4 text-black roboto-bold">CLIENTE</h3>
+        <p class="text-xs sm:text-sm text-black mb-4 roboto">Ingresar sus datos para la emisión de su comprobante </p>
+        <!-- Encabezado y boton -->
+        <div class="bg-blue-500 text-white py-2 rounded-t-lg flex justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="M222-255q63-40 124.5-60.5T480-336q72 0 134 20.5T739-255q44-54 62.5-109T820-480q0-145-97.5-242.5T480-820q-145 0-242.5 97.5T140-480q0 61 19 116t63 109Zm257.81-195q-57.81 0-97.31-39.69-39.5-39.68-39.5-97.5 0-57.81 39.69-97.31 39.68-39.5 97.5-39.5 57.81 0 97.31 39.69 39.5 39.68 39.5 97.5 0 57.81-39.69 97.31-39.68 39.5-97.5 39.5Zm-.21 370q-83.15 0-156.28-31.5t-127.22-86Q142-252 111-324.84 80-397.68 80-480.5t31.5-155.66Q143-709 197.5-763t127.34-85.5Q397.68-880 480.5-880t155.66 31.5Q709-817 763-763t85.5 127Q880-563 880-480.27q0 82.74-31.5 155.5Q817-252 763-197.5t-127.13 86Q562.74-80 479.6-80Z"/></svg>
+        </div>
+
+        <!-- Boton -->
+        <div class="flex justify-center items-center my-4">
+            <!-- Etiqueta de estado (BOLETA) -->
+            <span class="mr-4 text-black font-medium roboto-bold">BOLETA</span>
+            
+            <!-- Switch -->
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="sr-only peer" [(ngModel)]="switchState" (change)="toggleSwitch()">
+                <div 
+                  class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 rounded-full 
+                         peer dark:bg-black peer-checked:bg-orange-500 dark:peer-checked:bg-orange-500">
+                </div>
+                <div 
+                  class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform 
+                         peer-checked:translate-x-5">
+                </div>
+              </label>
+
+            <!-- Etiqueta de estado (FACTURA) -->
+            <span class="ml-4 text-black font-medium roboto-bold">FACTURA</span>
+        </div>
+        <!-- Primer contenedor (BOLETA) -->
+        <div *ngIf="!switchState" class="bg-black text-white py-2 rounded-t-lg flex justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="M222-80q-43.75 0-74.37-30.63Q117-141.25 117-185v-125h127v-570l59.8 60 59.8-60 59.8 60 59.8-60 59.8 60 60-60 60 60 60-60 60 60 60-60v695q0 43.75-30.62 74.37Q781.75-80 738-80H222Zm516-60q20 0 32.5-12.5T783-185v-595H304v470h389v125q0 20 12.5 32.5T738-140ZM357-622v-60h240v60H357Zm0 134v-60h240v60H357Zm333-134q-12 0-21-9t-9-21q0-12 9-21t21-9q12 0 21 9t9 21q0 12-9 21t-21 9Zm0 129q-12 0-21-9t-9-21q0-12 9-21t21-9q12 0 21 9t9 21q0 12-9 21t-21 9ZM221-140h412v-110H177v65q0 20 12.65 32.5T221-140Zm-44 0v-110 110Z"/></svg>
+        </div>
+        <!-- Formulario Boleta -->
+        <form *ngIf="!switchState" class="bg-transparent shadow-md rounded px-4 py-6">
+            <div class="mb-4">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="dni">DNI</label>
+                <div class="flex items-center">
+                  <input 
+                    type="text" 
+                    id="dni" 
+                    placeholder="Ingrese su número de DNI" 
+                    #dniInput 
+                    class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline mr-2" >
+                  <button 
+                    (click)="fetchDniData(dniInput.value)" 
+                    class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                      <path d="M801-108 537-372q-31 26-72.96 40-41.96 14-86.6 14-114.6 0-192.52-78Q107-474 107-586t78-190q78-78 190-78t190 78q78 78 78 190.15 0 43.85-13.5 84.35Q616-461 588-425l266 264-53 53ZM375.5-391q81.75 0 138.13-56.79Q570-504.58 570-586q0-81.42-56.29-138.21Q457.43-781 375.59-781q-82.67 0-139.13 56.79Q180-667.42 180-586q0 81.42 56.46 138.21Q292.92-391 375.5-391Z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Error o no hay resultados -->
+              <div *ngIf="noResultsDNI" class="text-red-500 mt-4">No se encontraron resultados</div>
+              <!-- Resultados de la búsqueda -->
+              <div class="mt-4">
+                <div class="mb-4">
+                  <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="nombres">Nombres</label>
+                  <input 
+                    class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" 
+                    type="text" 
+                    [value]="dniData?.nombres || ''" 
+                    readonly>
+                </div>
+              
+                <div class="mb-4">
+                  <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="apellidoPaterno">Apellido Paterno</label>
+                  <input 
+                    class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" 
+                    type="text" 
+                    [value]="dniData?.apellidoPaterno || ''" 
+                    readonly>
+                </div>
+              
+                <div class="mb-4">
+                  <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="apellidoMaterno">Apellido Materno</label>
+                  <input 
+                    class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" 
+                    type="text" 
+                    [value]="dniData?.apellidoMaterno || ''" 
+                    readonly>
+                </div>
+              
+                <div class="mb-4">
+                  <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="codVerifica">Código de Verificación</label>
+                  <input 
+                    class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" 
+                    type="text" 
+                    [value]="dniData?.codVerifica || ''" >
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="email">Correo Electrónico:</label>
+                    <input
+                      class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+                      type="email"
+                      id="email"
+                      placeholder="Ingrese su correo electrónico"
+                      [(ngModel)]="gmailBoleta"
+                      name="gmail"
+                      required
+                      email
+                    />
+                    <div *ngIf="gmailBoleta?.length && !isEmailValid(gmailBoleta)" class="text-red-600 text-sm">
+                      El correo electrónico debe contener un '&#64;'.
+                    </div>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="celular">Celular:</label>
+                    <input
+                      class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+                      type="text"
+                      id="celular"
+                      placeholder="Ingrese su número de celular"
+                      [(ngModel)]="celularBoleta"
+                      name="celular"
+                      required
+                      pattern="^[0-9]{9}$"
+                    />
+                    <div *ngIf="celularBoleta?.length && !isCelularValid(celularBoleta)" class="text-red-600 text-sm">
+                      El número de celular debe contener solo 9 dígitos.
+                    </div>
+                  </div>
+                  
+              </div>              
+            <label for="terminos" class="text-gray-600 flex items-center mb-4">
+                <input type="checkbox" id="terminos" class="mr-2 leading-tight">
+                <span class="text-blue-800 ml-2 text-xs roboto">He leído y entendido las <a href="#" class="text-blue-800 roboto-bold">POLÍTICAS DE PRIVACIDAD, COMERCIO ELECTRÓNICO</a></span>
+            </label>
+            <button class="w-full bg-orange-500 hover:bg-orange-700 text-white roboto-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"  type="button" (click)="continue()">CONTINUAR</button>
+        </form>
+
+
+        <!-- Segundo contenedor (FACTURA) -->
+        <div *ngIf="switchState" class="bg-orange-500 text-white py-2 rounded-t-lg flex justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="M222-80q-43.75 0-74.37-30.63Q117-141.25 117-185v-125h127v-570l59.8 60 59.8-60 59.8 60 59.8-60 59.8 60 60-60 60 60 60-60 60 60 60-60v695q0 43.75-30.62 74.37Q781.75-80 738-80H222Zm516-60q20 0 32.5-12.5T783-185v-595H304v470h389v125q0 20 12.5 32.5T738-140ZM357-622v-60h240v60H357Zm0 134v-60h240v60H357Zm333-134q-12 0-21-9t-9-21q0-12 9-21t21-9q12 0 21 9t9 21q0 12-9 21t-21 9Zm0 129q-12 0-21-9t-9-21q0-12 9-21t21-9q12 0 21 9t9 21q0 12-9 21t-21 9ZM221-140h412v-110H177v65q0 20 12.65 32.5T221-140Zm-44 0v-110 110Z"/></svg>
+        </div>
+        <!-- Formulario FACTURA -->
+        <form *ngIf="switchState" class="bg-transparent shadow-md rounded px-4 py-6">
+
+            <div class="mb-4">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2" for="ruc">RUC</label>
+                <div class="flex items-center">
+                    <input id="ruc" class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline mr-2" type="text" placeholder="Ingrese su número de RUC" #rucInput>
+                    <button (click)="fetchRucData(rucInput.value)" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                            <path d="M801-108 537-372q-31 26-72.96 40-41.96 14-86.6 14-114.6 0-192.52-78Q107-474 107-586t78-190q78-78 190-78t190 78q78 78 78 190.15 0 43.85-13.5 84.35Q616-461 588-425l266 264-53 53ZM375.5-391q81.75 0 138.13-56.79Q570-504.58 570-586q0-81.42-56.29-138.21Q457.43-781 375.59-781q-82.67 0-139.13 56.79Q180-667.42 180-586q0 81.42 56.46 138.21Q292.92-391 375.5-391Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div *ngIf="noResultsRUC" class="text-red-500 mt-4">No se encontraron resultados</div>
+
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Razón Social</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.razonSocial || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Nombre Comercial</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.nombreComercial || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Teléfono</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.telefonos.join(', ') || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Estado</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.estado || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Condición</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.condicion || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Dirección</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.direccion || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Departamento</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.departamento || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Provincia</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.provincia || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Distrito</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.distrito || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Ubigeo</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.ubigeo || ''" readonly>
+            </div>
+            <div class="mb-2">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left">Capital</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="rucData?.capital || ''" readonly>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="email">Correo electrónico:</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="email" id="email" placeholder="Ingrese su correo electrónico" [(ngModel)]="gmailFactura" name="gmail" required
+                email>
+                <div *ngIf="gmailFactura?.length && !isEmailValid(gmailFactura)" class="text-red-600 text-sm">
+                    El correo electrónico debe contener un '&#64;'.
+                  </div>
+              </div>
+            
+            <div class="mb-4">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="celular">Celular:</label>
+                <input class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" type="text" id="celular" placeholder="Ingrese su número de celular" [(ngModel)]="celularFactura" name="celular" required
+                pattern="^[0-9]{9}$">
+                <div *ngIf="celularFactura?.length && !isCelularValid(celularFactura)" class="text-red-600 text-sm">
+                    El número de celular debe contener solo 9 dígitos.
+                  </div>
+
+            </div>
+           
+            <label for="terminos" class="text-gray-600 flex items-center mb-4">
+                <input type="checkbox" id="terminos" class="mr-2 leading-tight">
+                <span class="text-blue-800 ml-2 text-xs roboto">He leído y entendido las <a href="#" class="text-blue-800 roboto-bold">POLÍTICAS DE PRIVACIDAD, COMERCIO ELECTRÓNICO</a></span>
+            </label>
+
+            <button 
+        class="w-full bg-orange-500 hover:bg-orange-700 text-white roboto-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" 
+        type="button" 
+        (click)="continue()">
+        CONTINUAR
+    </button>
+</form>
+    </div>
+    <!-- Resumen de Compra -->
+    <div class="w-full lg:max-w-md">
+        <app-summary></app-summary>
+    </div>
+</div>
+    <!-- ¿Necesitas Ayuda? -->
+    <app-aid></app-aid>
+</main>
+<app-footer></app-footer>

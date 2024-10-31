@@ -1,0 +1,156 @@
+
+<div class="grid grid-rows-2 grid-cols-7 bg-neutral-300 lg:mt-[4.5rem] sm:mt-14 mt-24 z-0">
+
+    <div class="xl:col-start-1 xl:col-end-2 lg:col-start-1 lg:col-end-2 md:col-start-1 md:col-end-3 sm:col-start-1 sm:col-end-3 col-start-1 col-end-8 sm:row-start-1 sm:row-end-3 row-start-1 row-end-2">
+        <div class="sm:sticky lg:top-[4.5rem] sm:top-14 top-24">
+            <app-sidebar class=""></app-sidebar>
+        </div>
+    </div>
+
+    <div class="xl:col-start-2 xl:col-end-8 lg:col-start-2 lg:col-end-8 md:col-start-3 md:col-end-8 sm:col-start-3 sm:col-end-8 col-start-1 col-end-8 sm:row-start-1 sm:row-end-3 row-start-2 row-end-3">
+       
+        <!-- BANNER DE DESCUENTOS -->
+        <div class="relative w-full overflow-hidden">
+            <div
+              class="flex transition-transform duration-500"
+              [ngStyle]="{ transform: 'translateX(-' + currentSlide * 100 + '%)' }"
+            >
+              <div class="min-w-full m-3" *ngFor="let banners of banner">
+                @if(banners.estado == true){
+                <a [href]="banners.enlace">
+                  <img class="w-full h-full" [src]="banners.imagen" alt="Banner" />
+                </a>
+                }
+              </div>
+            </div>
+          
+            <!-- Botones de navegación -->
+            <button
+              (click)="prevSlide()"
+              class="absolute top-1/2 left-0 transform -translate-y-1/2 p-2 bg-gray-700 text-white rounded-full"
+            >
+              &#10094;
+            </button>
+            <button
+              (click)="nextSlide()"
+              class="absolute top-1/2 right-0 transform -translate-y-1/2 p-2 bg-gray-700 text-white rounded-full"
+            >
+              &#10095;
+            </button>
+          </div>
+          
+
+        <!-- TITULO DE -- LO QUE BUSCAS ESTA AQUI ------------------ -->
+        <div class="flex justify-center my-5">
+            <p class="lg:text-4xl md:text-2xl text-xl roboto-medium"><span class="text-indigo-500 roboto-bold mr-2">#</span>lo que buscas está aquí</p>
+        </div>
+
+        <!-- LISTA DE PRODUCTOS ------------------------- -->
+
+        <div class="flex flex-wrap my-3 mx-3">
+            @switch (CargaDatos && CargaDatosMarca) {
+                @case('none'){
+
+                }
+                @case('loading'){
+                    <div class="p-3 xl:w-1/4 lg:w-1/3 w-1/2" *ngFor="let Producto of Productos">
+                        <div class="bg-white lg:p-5 md:p-4 p-3 rounded-lg hover:shadow-[0px_0px_25px_0px_#a3a3a3] hover:duration-300">
+                            <div class="flex justify-center">
+                                <img class="w-full h-full p-3" src="assets/img/product01.png" alt="">
+                            </div>
+                            <hr>
+                            <p class="sm:my-2 my-1 lg:text-base sm:text-xs text-[0.5rem] roboto-light">cargando</p>
+                            <h3 class="roboto-regular md:text-base sm:text-xs text-[0.5rem]">cargando</h3>
+                            <p class="text-black roboto-medium md:my-1 md:text-lg text-base sm:my-2 my-1">S/ -----</p>
+                            <p class="text-red-500 md:text-lg text-base roboto-medium">S/ ----- <span class="text-white roboto-light md:text-lg text-base bg-red-500 px-2 rounded">Oferta</span></p>
+
+                            <div class="hover:bg-amber-500 border-amber-500 text-amber-500 hover:text-white md:border-2 border lg:mt-4 md:mt-3 mt-3 sm:mt-2 rounded-full flex justify-center hover:shadow-[0px_0px_10px_0px_#f59e0b] hover:duration-500">
+                                <a class="roboto-medium md:text-xl sm:text-lg text-base md:py-2 py-1" routerLink="producto/{{ Producto.idProducto}}">Ver Producto</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @case('done'){
+                    <ng-container *ngFor="let producto of Productos; let i = index">
+                        @if(producto.estado == true){
+                            <div class="p-3 xl:w-1/4 lg:w-1/3 w-1/2">
+                                <div class="bg-white lg:p-5 md:p-4 p-3 rounded-lg hover:shadow-[0px_0px_25px_0px_#a3a3a3] hover:duration-300">
+                                    <div class="flex justify-center">
+                                        <img class="w-full h-full p-3" src="{{producto.imagen01}}" alt="{{producto.productoNombre}}">
+                                    </div>
+                                    <hr>
+
+                                    <!-- Encuentra la marca correspondiente -->
+                                    <ng-container *ngFor="let marca of Marcas">
+                                        <ng-container *ngIf="marca.idMarca == producto.idMarca">
+                                            <p class="sm:my-2 my-1 lg:text-base sm:text-xs text-[0.5rem] roboto-light">
+                                                {{ marca.marcaNombre }}
+                                            </p>
+                                        </ng-container>
+                                    </ng-container>
+
+                                    <h3 class="roboto-regular md:text-base sm:text-xs text-[0.5rem] line-clamp-2">{{ producto.productoNombre }}</h3>
+                                    <p class="text-black roboto-medium md:my-1 md:text-lg text-base sm:my-2 my-1">S/ {{ producto.precio | number: '1.2-2' }}</p>
+                                    <p [ngStyle]="{ visibility: producto.precioOferta ? 'visible' : 'hidden' }" class="text-red-500 md:text-lg text-base roboto-medium">
+                                        S/ {{ producto.precioOferta | number: '1.2-2'}}
+                                        <span class="text-white roboto-light md:text-lg text-base bg-red-500 px-2 rounded">Oferta</span>
+                                    </p>
+
+                                    <div class="hover:bg-amber-500 cursor-pointer border-amber-500 text-amber-500 hover:text-white md:border-2 border lg:mt-4 md:mt-3 mt-3 sm:mt-2 rounded-full flex justify-center hover:shadow-[0px_0px_10px_0px_#f59e0b] hover:duration-500" routerLink="producto/{{ producto.idProducto }}">
+                                        <a class="roboto-medium md:text-xl sm:text-lg text-base md:py-2 py-1">Ver Producto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Agrega un solo banner después de cada cinco productos -->
+                        @if((i + 1) % 4 == 0 && Marcas.length > 0) {
+                            <div class="w-full">
+                                <div class="m-3 hover:shadow-[0px_0px_25px_0px_#a3a3a3] hover:duration-300">
+                                    <a [routerLink]="'/marca/' + getBrandByIndex(i).idMarca">
+                                        <!-- Get the brand image based on the index -->
+                                        <img class="w-full h-full object-cover" src="{{getBrandByIndex(i).imagen}}" alt="Brand Image">
+                                    </a>
+                                </div>
+                            </div>
+                        }                                                             
+                    </ng-container>
+                }
+                @case('error'){
+
+                }
+            }
+        </div>
+
+
+        <!-- SUBTITULO ENCUENTRA LO MEJOR  -------------- -->
+        <div class="flex justify-center my-5">
+            <p class=" lg:text-4xl md:text-2xl text-xl roboto-medium"><span class="text-indigo-500 roboto-bold mr-2">#</span>Encuentra lo mejor en</p>
+        </div>
+
+        <!-- ULTIMO BANNER DE CATEGORIA --------------------------------------------------------------------------------------------------------- -->
+        <div class="m-3 hover:shadow-[0px_0px_25px_0px_#a3a3a3] hover:duration-300" *ngFor="let categoria of Categorias">
+            <a routerLink="/categoria/{{categoria.idCategoria}}">
+                <img class="w-full h-full object-cover" src="{{categoria.imagen}}" alt="{{categoria.categoriaNombre}}">
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<div>
+    <app-footer></app-footer>
+</div>
+
+<style>
+    .grid-rows-2 {
+  grid-template-rows: min-content min-content;
+}
+</style>
+
+
+  
+
+
+

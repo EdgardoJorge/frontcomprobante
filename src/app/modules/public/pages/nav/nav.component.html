@@ -1,0 +1,84 @@
+<div class="bg-black fixed top-0 right-0 left-0 z-10">
+
+    <div class="grid grid-rows-2 grid-cols-7">
+
+        <div class="col-start-1 col-end-2 sm:row-start-1 sm:row-end-3 row-start-1 row-end-2 flex justify-center items-center" routerLink="/">
+            <img class="lg:w-14 lg:h-14 my-2 w-8 h-8 cursor-pointer" src="assets/img/fibertel.png"  alt="">
+        </div>
+
+        <div class="sm:col-start-2 sm:col-end-6 col-start-1 col-end-8 sm:row-start-1 sm:row-end-3 row-start-2 row-end-3 content-center mx-5 sm:mx-0">
+            <div class="flex sm:py-1 sm:my-2 px-5 py-1 rounded-full w-full bg-white">
+                <input #inputElement type="text" placeholder="¿QUE DESEA BUSCAR?" class="md:text-base text-sm text-black w-full outline-none bg-transparent input"  (input)="onSearchInputChange($event)">
+                <button (click)="limpiarInput()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="sm:w-8 sm:h-8 w-6 h-6" viewBox="0 -960 960 960" fill="black">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="sm:col-start-6 sm:col-end-8 col-start-5 col-end-8 sm:row-start-1 sm:row-end-3 row-start-1 row-end-2 flex items-center justify-end ">
+
+            <a href="rastreo-de-pedido">
+                <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" class="2xl:w-12 2xl:h-10 lg:w-10 lg:h-8 md:8 md:6 w-7 h-6 fill-slate-50 hover:fill-indigo-500 stroke-2 duration-300"  viewBox="0 0 166.93 147.75"><defs></defs><path class="cls-1" d="M303,375.54a41.45,41.45,0,0,1,.86-4.16,14.23,14.23,0,0,1,6.81-8.2c6.94-4.05,13.93-8,20.89-12.06q14.74-8.53,29.49-17.12a15.77,15.77,0,0,1,9.06-2.42,14.78,14.78,0,0,1,6.52,2.06l18.89,10.91.4.26-6.67,13.12c-1.42-.81-2.8-1.59-4.18-2.39-4.57-2.68-9.16-5.34-13.72-8.05a3.89,3.89,0,0,0-4.37,0c-3.69,2.23-7.43,4.38-11.15,6.57l-.93.55,1.6.93,30.57,17.62a5.77,5.77,0,0,1,2.87,3.62,34.32,34.32,0,0,0,10.74,16.67c.26.24.52.47.76.72a7.77,7.77,0,0,1,.51.69l-.69.42q-11.2,6.54-22.41,13.1a7.3,7.3,0,0,0-1.47,1.19,2.67,2.67,0,0,0-.83,2c0,2-.05,3.95-.05,5.92q0,21-.05,41.91v.73c.83-.39,1.58-.69,2.26-1.09q20-11.67,40-23.37a4,4,0,0,0,1.91-3.68q0-14.12.05-28.22v-.91l14.61-1c0,.31,0,.59,0,.86q0,13.29,0,26.58c0,2.1.06,4.21-.05,6.31a14.18,14.18,0,0,1-7.46,12c-7.75,4.53-15.54,9-23.31,13.49l-27.18,15.75a16.52,16.52,0,0,1-7.05,2.35,15.92,15.92,0,0,1-9.38-2.43c-5.95-3.46-11.88-6.93-17.84-10.37q-15.8-9.13-31.59-18.22a15.55,15.55,0,0,1-7.33-8,38.44,38.44,0,0,1-1-4.14c-.05-.21-.08-.42-.12-.64v-22a4.88,4.88,0,0,0,.06-.52q0-6.46,0-12.92a4.43,4.43,0,0,0-.06-.51Zm58.85,84.78c0-.31,0-.5,0-.7q0-17.46,0-34.93c0-4.19-.07-8.38,0-12.57a3.78,3.78,0,0,0-2.09-3.58l-39.95-23.33c-.59-.35-1.24-.58-1.94-.91-.05.67-.12,1.22-.13,1.76,0,3.62,0,7.24,0,10.86,0,11.64.07,23.29.07,34.93a4.38,4.38,0,0,0,2.36,4.14l33.41,19.55C356.28,457.13,359,458.69,361.85,460.32Zm21.62-71.69c-.22-.14-.38-.25-.54-.34l-41.59-24.15a2.49,2.49,0,0,0-2.77,0c-4.12,2.42-8.26,4.79-12.39,7.19-.15.09-.3.2-.49.33l.63.38,30.8,17.89,10.68,6.19a2.41,2.41,0,0,0,2.71,0c1.67-1,3.41-2,5.12-3Z" transform="translate(-303 -331.55)"/><path d="M303,399.5a4.43,4.43,0,0,1,.06.51q0,6.47,0,12.92a4.88,4.88,0,0,1-.06.52Z" transform="translate(-303 -331.55)"/><path class="cls-1" d="M440.67,386.48c-1.83.88-3.55,1.87-5.39,2.54-10,3.67-19.21,2.32-27.26-4.7a22.91,22.91,0,0,1-2.21-32.17,24.09,24.09,0,0,1,18.35-8.9c9.4-.33,17.27,2.93,22.73,10.85a22.63,22.63,0,0,1-.26,26l-.69,1,24,22.71-4.76,5.7ZM443,367a15.84,15.84,0,0,0-5-11.68,18.64,18.64,0,0,0-22.42-1.88,16.06,16.06,0,0,0-3.65,24.1,18.24,18.24,0,0,0,20.38,4.88A16.48,16.48,0,0,0,443,367Z" transform="translate(-303 -331.55)"/><path class="cls-1" d="M425.57,371.93a6.31,6.31,0,0,1-3.39-.89,4.48,4.48,0,0,1,0-7.88,5,5,0,0,1,4.94-.39,10.06,10.06,0,0,1,3.44,2.58,3,3,0,0,1,.23,4A6,6,0,0,1,425.57,371.93Z" transform="translate(-303 -331.55)"/></svg>
+            </a>
+            <a href="/recorrido/carrito" class="mx-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="2xl:w-12 2xl:h-10 lg:w-10 lg:h-8 md:8 md:6 w-7 h-6 fill-slate-50 hover:fill-indigo-500 stroke-2 duration-300" viewBox="0 -960 960 960"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+            </a>
+        </div>
+       
+    </div>   
+</div>
+@switch (CargaDatos) {
+    @case ("none") {
+
+    }
+    @case ("loading") {
+        <div class="fixed top-14 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center" (click)="cerrarPopUp($event)">
+            <div class="bg-white rounded-lg p-4 w-1/2 h-1/2 overflow-x-auto" (click)="$event.stopPropagation()">
+                <p>Tenga paciencia estamos buscando sus productos</p>
+            </div>
+        </div>
+    }
+    @case ("done") {
+        <div class="fixed top-24 sm:top-16 left-0 w-full h-full z-20 bg-black bg-opacity-50 flex justify-center items-start" (click)="cerrarPopUp($event)">
+            <div class="bg-white rounded-lg p-4 lg:w-2/3 xl:w-1/2 h-1/2 w-full mx-5 overflow-x-auto" (click)="$event.stopPropagation()">
+                <div class="bg-white flex-col rounded-lg justify-center items-center">
+                    <div *ngFor="let producto of Productos">
+                        @if(producto.estado == true){
+                    <div class="flex rounded-xl hover:shadow-[0px_0px_25px_0px_#94a3b8] mb-3 duration-300 cursor-pointer group py-7 px-4 w-full" routerLink="producto/{{ producto.idProducto }}">
+                        <div>
+                            <img class="md:w-32 w-16 h-16 md:h-32 mr-5" src="{{ producto.imagen01}}" alt="imagen01">
+                        </div>
+                        <div class="my-auto">
+                            <p class="roboto-regular md:text-base sm:text-xs text-[0.5rem]">{{producto.productoNombre | slice:0:55}} {{ producto.productoNombre.length > 50 ? '...' : '' }}</p>
+                            @if(producto.precioOferta != null && producto.precioOferta > 0) {
+                                <p class="roboto-regular md:text-base sm:text-xs text-[0.5rem]">Precio Oferta: <span class="text-red-500">{{ producto.precioOferta | number: '1.2-2' }}</span></p>
+                            }@else{
+                                <p class="roboto-regular md:text-base sm:text-xs text-[0.5rem]">Precio: {{ producto.precio | number: '1.2-2' }}</p>
+                            }
+                        </div>
+                    </div>
+                    }@else {
+                        <div class="fixed top-14 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center" (click)="cerrarPopUp($event)">
+                            <div class="bg-white rounded-lg p-4 w-1/2 h-1/2 flex justify-center items-center" (click)="$event.stopPropagation()">
+                                <p class="roboto-bold text-xl">No se encuentra el producto</p>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+    }
+    @case ("error") {
+        <div class="fixed top-14 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center" (click)="cerrarPopUp($event)">
+            <div class="bg-white rounded-lg p-4 w-1/2 h-1/2 flex justify-center items-center" (click)="$event.stopPropagation()">
+                <p class="roboto-bold text-xl">No se encuentra el producto</p>
+            </div>
+        </div>
+    }
+} 
+<section>
+    <router-outlet/>
+</section>

@@ -1,0 +1,138 @@
+<div class="grid grid-cols-12 grid-rows-1 pt-20">
+
+  <aside class=" bg-gray-200 h-screen overflow-y-auto col-start-1 col-end-3 row-start-1 row-end-2 grid justify-items-center py-5 px-2 fixed">
+
+    <a routerLink="/admin/dashboard" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full hover:duration-500">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white fill-black h-8 w-8"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white ">Inicio</p>
+    </a>
+    <a routerLink="/admin/colaboradores" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white fill-black h-8 w-8"><path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white">Colaboradores</p>
+    </a>
+    <a routerLink="/admin/productos" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M80-160q-33 0-56.5-23.5T0-240h160q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240h160q0 33-23.5 56.5T880-160H80Zm400-40q17 0 28.5-11.5T520-240q0-17-11.5-28.5T480-280q-17 0-28.5 11.5T440-240q0 17 11.5 28.5T480-200ZM160-320h640v-440H160v440Zm0 0v-440 440Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white transition duration-300">Productos</p>
+    </a>
+    <a routerLink="/admin/producto/crear" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white transition duration-300">Crear Producto</p>
+    </a>
+    <a routerLink="/admin/categorias-marcas" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white transition duration-300">Marcas & Categorias</p>
+    </a>
+    <a routerLink="/admin/pedidos" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M160-160v-516L82-846l72-34 94 202h464l94-202 72 34-78 170v516H160Zm240-280h160q17 0 28.5-11.5T600-480q0-17-11.5-28.5T560-520H400q-17 0-28.5 11.5T360-480q0 17 11.5 28.5T400-440ZM240-240h480v-358H240v358Zm0 0v-358 358Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white transition duration-300">Pedidos</p>
+    </a>
+    <a routerLink="/admin/envios" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M240-160q-50 0-85-35t-35-85H40v-440q0-33 23.5-56.5T120-800h560v160h120l120 160v200h-80q0 50-35 85t-85 35q-50 0-85-35t-35-85H360q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T280-280q0-17-11.5-28.5T240-320q-17 0-28.5 11.5T200-280q0 17 11.5 28.5T240-240ZM120-360h32q17-18 39-29t49-11q27 0 49 11t39 29h272v-360H120v360Zm600 120q17 0 28.5-11.5T760-280q0-17-11.5-28.5T720-320q-17 0-28.5 11.5T680-280q0 17 11.5 28.5T720-240Zm-40-200h170l-90-120h-80v120ZM360-540Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white transition duration-300">Envios</p>
+    </a>
+    <a routerLink="/admin/recojos" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M160-720v-80h640v80H160Zm0 560v-240h-40v-80l40-200h640l40 200v80h-40v240h-80v-240H560v240H160Zm80-80h240v-160H240v160Zm-38-240h556-556Zm0 0h556l-24-120H226l-24 120Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white transition duration-300">Recojos</p>
+    </a>
+    <a routerLink="/admin/comprobantes" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M200-200v-560 560Zm0 80q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v100h-80v-100H200v560h560v-100h80v100q0 33-23.5 56.5T760-120H200Zm320-160q-33 0-56.5-23.5T440-360v-240q0-33 23.5-56.5T520-680h280q33 0 56.5 23.5T880-600v240q0 33-23.5 56.5T800-280H520Zm280-80v-240H520v240h280Zm-160-60q25 0 42.5-17.5T700-480q0-25-17.5-42.5T640-540q-25 0-42.5 17.5T580-480q0 25 17.5 42.5T640-420Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white transition duration-300">Comprobantes</p>
+    </a>
+    <a  routerLink="/admin/banners" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white transition duration-300">Banner Ofertas</p>
+    </a>
+    <a routerLink="/admin/perfil/{{administrador?.idAdministrador}}" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
+      <p class="pl-3 text-lg group-hover:text-white transition duration-300">Perfil</p>
+    </a>
+    <button (click)="logout()" class="flex hover:bg-blue-400 rounded-xl transition duration-300 group p-2 my-2 items-center w-full mb-20">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="group-hover:fill-white transition duration-300 fill-black h-8 w-8"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>
+      <p  class="pl-3 text-lg group-hover:text-white transition duration-300">Cerrar Sesion</p>
+    </button>
+  </aside>
+
+  <main class="col-start-3 col-end-13 row-start-1 row-end-2 xl:mx-14 lg: mx-8"> 
+
+    <h1 class="my-10 text-lg roboto-light">Panel para crear <span class="roboto-bold">Marca</span></h1>
+
+      <div class="mx-20">
+        <form (ngSubmit)="createMarca()"  [formGroup]="formMarca" class="bg-gray-200 w-full rounded-xl p-8 flex flex-col mb-10">
+          
+          <!-- Nombre -->
+          <div>
+            <p class="mb-1 text-base roboto-bold">NOMBRE MARCA</p>
+            <input
+              type="text"
+              formControlName="marcaNombre"
+              class="w-full rounded-lg border-2 border-black py-2 px-3 text-sm bg-transparent"
+              placeholder="Ingrese Nombre de la Categoria" [ngClass]="{'border-red-500': isFieldInvalid('marcaNombre')}" />
+              <div *ngIf="isFieldInvalid('marcaNombre')" class="text-red-500 text-sm mt-1">
+                El nombre de la marca es obligatorio y debe tener entre 5 y 50 caracteres Alfabéticos.
+              </div>
+          </div>
+
+          <!-- Imagen -->
+          <div class="my-1">
+            <p class="mb-1 text-base roboto-bold"> IMAGEN</p>
+      
+            <input type="file" (change)="onFileSelected($event)" class="w-full rounded-lg border-2 border-black cursor-pointer">
+            <div *ngIf="uploadPercent > 0" class="text-sm mt-2">
+              Progreso de la subida: {{ uploadPercent }}%
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-1.5 my-2 dark:bg-gray-700">
+              <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500" [style.width]="uploadPercent + '%'"></div>
+            </div>
+          </div>
+
+          <img *ngIf="downloadURL" [src]="downloadURL" class="mt-5 border-black rounded-lg h-36 object-cover w-full aspect-auto border-2 border-dashed p-2">
+
+          <!-- Estado -->
+          <div class="my-1">
+            <p class="mb-1 text-base roboto-bold">ESTADO / VISIBILIDAD</p>
+            <select formControlName="estado" id="estado" class="w-full rounded-lg border-2 border-black py-2 px-3 text-sm bg-transparent" [ngClass]="{'border-red-500': isFieldInvalid('estado')}">
+                <option [ngValue]="true">Activo</option>
+                <option [ngValue]="false">Inactivo</option>
+            </select>
+            <div *ngIf="isFieldInvalid('estado')" class="text-red-500 text-sm">
+              Debes seleccionar un estado para la marca.
+            </div>
+          </div>
+
+           <!-- Mensaje de éxito -->
+          <div *ngIf="createMarcaState === 'done'" class="mt-4 text-green-600">
+            SE CREÓ NUEVA MARCA
+          </div>
+
+           <!-- Mensaje de error -->
+           <div *ngIf="createMarcaState === 'error'" class="mt-4 text-red-600">
+            ERROR AL CREAR NUEVA MARCA
+          </div>
+
+          <!-- Botones -->
+          <div class="flex justify-end gap-4 mt-8">
+            <button 
+              type="button" 
+              class="border-2 rounded-xl border-black px-16 py-2 text-sm roboto-bold hover:bg-black text-black hover:text-white duration-300" (click)="formMarca.reset()">
+              CANCELAR
+            </button>
+
+            <button 
+              type="submit" 
+              class="rounded-xl bg-sky-300 hover:bg-sky-500 px-16 py-2 text-sm roboto-bold duration-300" [disabled]="formMarca.invalid">
+              CREAR MARCA
+            </button>
+          </div>
+        </form>
+      </div> 
+
+    <div class="my-10">
+      <a routerLink="/admin/categorias-marcas" class="flex items-center w-96">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="fill-black w-10 h-10"><path d="M640-200 200-480l440-280v560Zm-80-280Zm0 134v-268L350-480l210 134Z"/></svg>
+        <p class="hover:ml-5 duration-300 text-nowrap">Regresar al Modulo Categorias / Marcas</p>
+      </a>
+    </div>
+    
+  </main>
+</div>
+      

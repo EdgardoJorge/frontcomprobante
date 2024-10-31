@@ -1,0 +1,78 @@
+
+<div class="grid grid-rows-2 grid-cols-7 bg-neutral-300 lg:mt-[4.5rem] sm:mt-14 mt-24 z-0">
+
+    <div class="xl:col-start-1 xl:col-end-2 lg:col-start-1 lg:col-end-2 md:col-start-1 md:col-end-3 sm:col-start-1 sm:col-end-3 col-start-1 col-end-8 sm:row-start-1 sm:row-end-3 row-start-1 row-end-2">
+        <div class="sm:sticky lg:top-[4.5rem] sm:top-14 top-24">
+            <app-sidebar class=""></app-sidebar>
+        </div>
+    </div>
+
+    <div class="xl:col-start-2 xl:col-end-8 lg:col-start-2 lg:col-end-8 md:col-start-3 md:col-end-8 sm:col-start-3 sm:col-end-8 col-start-1 col-end-8 sm:row-start-1 sm:row-end-3 row-start-2 row-end-3">
+        
+        <div class="m-3" *ngFor="let categorias of categoria">
+            <img class="w-full h-full object-cover" src="{{categorias.imagen}}" alt="banner">
+        </div>
+
+        <div class="flex justify-center my-3" *ngIf="categoria.length > 0">
+            <p class="lg:text-4xl md:text-3xl text-lg font-light"><span class="text-indigo-500 font-bold">#</span><span class="font-extralight">En</span><span class="font-semibold">cu</span><span class="font-medium">en</span>tra lo <span class="font-normal">mejor</span> de la marca <span class="text-indigo-500 font-semibold">{{categoria[0].categoriaNombre}}</span></p>
+    </div>
+        <!-- justify-around -->
+        <div class="flex flex-wrap my-3 mx-3">
+            @switch(cargaDatos){
+                @case('none'){}
+                @case('done'){
+                    <ng-container *ngFor="let producto of productosPorCategoria">
+                        <div *ngIf="producto.estado === true" class="p-3 xl:w-1/4 lg:w-1/3 w-1/2">
+                            <div class="bg-white lg:p-5 md:p-4 p-3 rounded-lg hover:shadow-[0px_0px_25px_0px_#a3a3a3] hover:duration-300">
+                                <div class="flex justify-center">
+                                    <img class="w-full h-full p-3" src="{{producto.imagen01}}" alt="{{producto.productoNombre}}">
+                                </div>
+                                <hr>
+                                <p class="sm:my-2 my-1 lg:text-base sm:text-xs text-[0.5rem] roboto-light">{{ getBrandName(producto.idCategoria) }}</p>
+                                <h3 class="roboto-regular md:text-base sm:text-xs text-[0.5rem] line-clamp-2">{{ producto.productoNombre }}</h3>
+                                <p class="text-black roboto-medium md:my-1 md:text-lg text-base sm:my-2 my-1">S/ {{ producto.precio | number: '1.2-2' }}</p>
+                                <p [ngStyle]="{ visibility: producto.precioOferta ? 'visible' : 'hidden' }" class="text-red-500 md:text-lg text-base roboto-medium">
+                                    S/ {{ producto.precioOferta | number: '1.2-2' }}
+                                    <span class="text-white roboto-light md:text-lg text-base bg-red-500 px-2 rounded">Oferta</span>
+                                </p>
+                                <div class="hover:bg-amber-500 cursor-pointer border-amber-500 text-amber-500 hover:text-white md:border-2 border lg:mt-4 md:mt-3 mt-3 sm:mt-2 rounded-full flex justify-center hover:shadow-[0px_0px_10px_0px_#f59e0b] hover:duration-500" 
+                                     routerLink="/producto/{{ producto.idProducto }}">
+                                    <a class="roboto-medium md:text-xl sm:text-lg text-base md:py-2 py-1">Ver Producto</a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                }
+                @case ('loading') {
+                    <div class=" p-3 xl:w-1/4 lg:w-1/3 w-1/2" *ngFor="let producto of productosPorCategoria">
+                        <div class="bg-white lg:p-5 md:p-4 p-3 rounded-lg  hover:shadow-[0px_0px_25px_0px_#a3a3a3] hover:duration-300">
+                            <div class="flex justify-center">
+                                <img class="w-full h-full p-3" src="assets/img/product01.png" alt="">
+                            </div>
+                            <hr>
+                            <p class=" sm:my-2 my-1 lg:text-lg md:text-[0.7rem] sm:text-[0.6rem] text-[0.5rem] font-light">cargando</p>
+                            <h3 class="font-semibold lg:text-[1rem] md:text-[0.8rem] sm:text-[0.7rem] text-[0.5rem]">cargando</h3>
+                            <p class="text-black font-medium md:my-1 lg:text-2xl md:text-xl sm:text-base text-base sm:my-2 my-1 ">S/ cargando</p>
+                            <p class="text-red-500 lg:text-3xl md:text-2xl sm:text-lg text-lg font-semibold">S/ cargando <span class="text-white font-semibold lg:text-base text-xs bg-red-500 px-2 rounded">Oferta</span></p>
+                            
+                            <div class="bg-amber-500 lg:mt-4 md:mt-3 mt-3 sm:mt-2 rounded-full flex justify-center hover:shadow-[0px_0px_10px_0px_#f59e0b] hover:duration-500">
+                                <a class="font-semibold lg:text-2xl md:text-xl sm:text-lg text-base text-white md:py-2 py-1">cargando</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    
+</div>
+
+<div>
+    <app-footer></app-footer>
+</div>
+
+<style>
+    .grid-rows-2 {
+  grid-template-rows: min-content min-content;
+}
+</style>

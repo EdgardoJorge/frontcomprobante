@@ -1,0 +1,173 @@
+
+<main class="col-start-1 col-end-13 row-start-2 row-end-3 bg-neutral-200 lg:mt-[4.5rem] sm:mt-14 mt-24 z-0">
+
+    <h1 class="text-xl sm:text-2xl text-center py-4 roboto-bold">RECORRIDO DE COMPRA</h1>  
+  
+    <!-- Dibulo de la pasarela -->
+  
+    <div class="mx-4 md:mx-10 relative flex items-center justify-center">
+        <!-- Botón -->
+        <button class="bg-transparent rounded-full transform rotate-180 absolute left-0 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+        
+        <!-- Contenedor de círculos y lineas -->
+        <div class="flex items-center flex-grow justify-center mx-10 md:mx-20">
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500"></div>
+            
+            <!-- Línea -->
+            <div class="h-1 bg-orange-500 flex-grow max-w-[380px]"></div>
+            
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500"></div>
+            
+            <!-- Línea -->
+            <div class="h-1 bg-black flex-grow max-w-[380px]"></div>
+            
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black"></div>
+        </div>
+    </div>
+  
+   <!-- Formulario del Cliente -->
+   <div class="flex flex-wrap lg:flex-nowrap mt-6 justify-between items-start mx-4 md:mx-28">
+        <!-- Sección del formulario -->
+        <div class="w-full lg:max-w-2xl px-4">
+        <h3 class="text-base sm:text-lg md:text-xl lg:text-2xl mt-4 text-black roboto-bold">ENVIO / RECOJO</h3>
+        <p class="text-xs sm:text-sm text-black mb-4 roboto">Rellene los campos solicitados para el ENVIO o RECOJO de su compra.</p>
+  
+        <!-- Encabezado y switch -->
+        <div class="bg-blue-500 text-white py-2 rounded-t-lg flex justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF">
+            <path d="M450-154v-309L180-619v309l270 156Zm60 0 270-156v-310L510-463v309Zm-60 69L150-258q-14-8-22-22t-8-30v-340q0-16 8-30t22-22l300-173q14-8 30-8t30 8l300 173q14 8 22 22t8 30v340q0 16-8 30t-22 22L510-85q-14 8-30 8t-30-8Zm194-525 102-59-266-154-102 59 266 154Zm-164 96 104-61-267-154-104 60 267 155Z"/>
+            </svg>
+        </div>
+  
+        <!-- Switch de selección -->
+        <div class="flex justify-center items-center my-4">
+            <span class="mr-4 text-black font-medium roboto-bold">ENVIO</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer" [(ngModel)]="switchState">
+            <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 rounded-full peer dark:bg-black"></div>
+            <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
+            </label>
+            <span class="ml-4 text-black font-medium roboto-bold">RECOJO</span>
+        </div>
+  
+        <!-- Formulario de Envío -->
+        <div *ngIf="!switchState">
+        <div class="bg-black text-white py-2 rounded-t-lg flex justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF">
+                <path d="M224.12-161q-49.12 0-83.62-34.42Q106-229.83 106-279H40v-461q0-24 18-42t42-18h579v167h105l136 181v173h-71q0 49.17-34.38 83.58Q780.24-161 731.12-161t-83.62-34.42Q613-229.83 613-279H342q0 49-34.38 83.5t-83.5 34.5Zm-.12-60q24 0 41-17t17-41q0-24-17-41t-41-17q-24 0-41 17t-17 41q0 24 17 41t41 17ZM100-339h22q17-27 43.04-43t58-16q31.96 0 58.46 16.5T325-339h294v-401H100v401Zm631 118q24 0 41-17t17-41q0-24-17-41t-41-17q-24 0-41 17t-17 41q0 24 17 41t41 17Zm-52-204h186L754-573h-75v148ZM360-529Z"/>
+            </svg>
+        </div>
+        <form class="bg-transparent shadow-md rounded px-4 py-6">
+  
+            <div class="relative">
+                <label class="block text-black text-sm roboto-bold pl-1 mb-2 text-left" for="departamento">Departamento</label>
+                <select id="departamento" name="departamento" 
+                  class=" shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" 
+                  [(ngModel)]="selectedDepartamento" 
+                  (change)="onDepartamentoChange()">
+                    <option value="" disabled selected>Seleccionar Departamento</option>
+                    <option *ngFor="let dep of departamentos" [value]="dep">{{ dep }}</option>
+                </select>
+                <div *ngIf="departamentoError" class="text-red-500 text-sm pl-1">Este campo es obligatorio</div>
+            </div>
+            
+            <div class="relative">
+                <label class="block text-black text-sm roboto-bold pt-4 pl-1 mb-2 text-left" for="provincia">Provincia</label>
+                <select id="provincia" name="provincia" 
+                  class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" 
+                  [(ngModel)]="selectedProvincia" 
+                  (change)="onProvinciaChange()">
+                    <option value="" disabled selected>Seleccionar Provincia</option>
+                    <option *ngFor="let prov of provincias" [value]="prov">{{ prov }}</option>
+                </select>
+                <div *ngIf="provinciaError" class="text-red-500 text-sm pl-1">Este campo es obligatorio</div>
+            </div>
+            
+            <div class="relative">
+                <label class="block text-black text-sm roboto-bold pl-1 pt-4 mb-2 text-left" for="distrito">Distrito</label>
+                <select id="distrito" name="distrito" 
+                  class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" 
+                  [(ngModel)]="selectedDistrito">
+                    <option value="" disabled selected>Seleccionar Distrito</option>
+                    <option *ngFor="let dist of distritos" [value]="dist">{{ dist }}</option>
+                </select>
+                <div *ngIf="distritoError" class="text-red-500 text-sm pl-1">Este campo es obligatorio</div>
+            </div>
+            
+            <div class="relative">
+              <label class="block text-black text-sm roboto-bold pl-1 pt-4 mb-2 text-left" for="Referencia">Referencia</label>
+              <span class="text-red-500">* después de la calle, para poner el número de la calle use N°</span>
+              <input type="text" 
+                     class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" 
+                     name="direccion" 
+                     placeholder="Indique direccion para la entrega" 
+                     [(ngModel)]="referencia" 
+                     (input)="validateReferencia()" />
+              <div *ngIf="referenciaError" class="text-red-500 text-sm pl-1">Este campo es obligatorio y debe contener un N° y despues el numero de su calle</div>
+          </div>
+          
+  
+            <div class="relative">
+              <label class="block text-black text-sm roboto-bold pl-1 pt-4 mb-2 text-left" for="CodigoPostal">Codigo Postal</label>
+              <input type="text" 
+                     class="shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" 
+                     name="direccion" 
+                     placeholder="Indique Código Postal de su localidad" 
+                     [(ngModel)]="CodigoPostal" 
+                     (input)="validateCodigoPostal()"
+                     pattern="^[0-9]*$" />
+              <div *ngIf="CodigoPostalError" class="text-red-500 text-sm pl-1">Este campo es obligatorio y solo debe contener números</div>
+          </div>
+          
+  
+            <div class="relative pt-6">
+            <button class="w-full bg-orange-500 hover:bg-orange-700 text-white roboto-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="button" (click)="continue()">CONTINUAR</button>
+            </div>
+    
+         </form>
+        </div>
+  
+      <!-- Formulario de Recojo -->
+        <div *ngIf="switchState">
+            <div class="bg-black text-white py-2 rounded-t-lg flex justify-center items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF">
+                <path d="M160-740v-60h642v60H160Zm5 580v-258h-49v-60l44-202h641l44 202v60h-49v258h-60v-258H547v258H165Zm60-60h262v-198H225v198Zm-22-258h494L692-599H266l-63 203Zm22 258v-198 198Zm277-294Z"/>
+                </svg>
+            </div>
+  
+            <form class="bg-transparent shadow-md rounded px-4 py-6">
+              <div class="text-center">
+                <h2 class="text-lg font-medium roboto-bold">¿Cómo llegar?</h2>
+                <p class="text-sm text-black ">Sigue las indicaciones en el mapa para llegar a nuestra ubicación y recoger tu producto.</p>
+              </div>
+              <div class="relative pt-4">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.5999684021363!2d-75.21328592605003!3d-12.071021488167707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910e964fda83a671%3A0x7e4eaa42e951eb78!2sJr.%20Loreto%20575%2C%20Huancayo%2012001!5e0!3m2!1ses!2spe!4v1713245229322!5m2!1ses!2spe"
+                  width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p class="text-xs text-center text-black mt-2 roboto pb-4">
+                  Estamos ubicados en: <strong>Jr. Loreto 575, Huancayo 12001</strong>
+                </p>
+              </div>
+              <div class="relative pt-6">
+                <button class="w-full bg-orange-500 hover:bg-orange-700 text-white roboto-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="button" (click)="continue()">CONTINUAR</button>
+                </div>
+               </form>
+          </div>
+        </div>
+        <!-- Resumen de Compra -->
+        <div class="w-full lg:max-w-md">
+           <app-summary></app-summary>
+        </div>
+    </div>
+    <!-- ¿Necesitas Ayuda? -->
+    <app-aid></app-aid>
+  </main>
+  <app-footer></app-footer>

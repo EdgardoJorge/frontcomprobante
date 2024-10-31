@@ -1,0 +1,56 @@
+
+<main class="col-start-1 col-end-13 row-start-2 row-end-3 bg-neutral-200 lg:mt-[4.5rem] sm:mt-14 mt-24 z-0">
+
+    <h1 class="text-xl sm:text-2xl text-center py-4 roboto-bold">RECORRIDO DE COMPRA</h1>  
+
+    <!-- Dibulo de la pasarela -->
+    <div class="mx-4 md:mx-10 relative flex items-center justify-center">
+        <!-- Botón -->
+        <button class="bg-transparent rounded-full transform rotate-180 absolute left-0 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
+        <!-- Contenedor de círculos y lineas -->
+        <div class="flex items-center flex-grow justify-center mx-10 md:mx-20">
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500"></div>
+            <!-- Línea -->
+            <div class="h-1 bg-orange-500 flex-grow max-w-[380px]"></div>
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500"></div>
+            <!-- Línea -->
+            <div class="h-1 bg-orange-500 flex-grow max-w-[380px]"></div>
+            <!-- Círculo -->
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500"></div>
+        </div>
+    </div>
+
+   <!-- Formulario del Cliente -->
+    <div class="flex flex-wrap lg:flex-nowrap mt-6 justify-between items-start mx-4 md:mx-28">
+        <!-- Sección del formulario -->
+        <div class="w-full lg:max-w-2xl px-4">
+            <h3 class="text-base sm:text-lg md:text-xl lg:text-2xl mt-4 text-black roboto-bold">PAGO</h3>
+            <p class="text-xs sm:text-sm text-black mb-4 roboto">A continuación se realizará el pago de sus productos.</p>
+            <div class="bg-blue-500 text-white py-2 rounded-t-lg flex justify-center items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="M880-740v520q0 24-18 42t-42 18H140q-24 0-42-18t-18-42v-520q0-24 18-42t42-18h680q24 0 42 18t18 42ZM140-631h680v-109H140v109Zm0 129v282h680v-282H140Zm0 282v-520 520Z"/></svg>
+            </div> 
+            <img src="assets/img/bannermp.jpg" >
+            <div class="pt-6">
+                <form >
+                    <button class="w-full bg-orange-500 hover:bg-orange-700 text-white roboto-bold py-1 px-3 rounded-full focus:outline-none focus:shadow-outline flex items-center justify-center gap-2" type="submit" (click)="continue()">
+                        <img src="assets/img/logomp.png" alt="icono" class="w-10 h-10">
+                        PAGAR CON MERCADO PAGO
+                    </button>
+                </form>
+            </div> 
+            </div>
+        <!-- Resumen de Compra -->
+        <div class="w-full lg:max-w-md">
+            <app-summary></app-summary>
+        </div>
+    </div>
+    <!-- ¿Necesitas Ayuda? -->
+    <app-aid></app-aid>
+</main>
+<app-footer></app-footer>

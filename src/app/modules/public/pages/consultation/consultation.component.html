@@ -1,0 +1,248 @@
+
+
+<div class="bg-neutral-300 lg:mt-[4.5rem] sm:mt-14 mt-24 z-0">
+
+    <!-- TITULO ------------------ -->
+    <div class="xl:mx-72 lg:mx-52 md:mx-20 sm:mx-16 mx-3 lg:pb-10 sm:pt-10 pt-3 lg:text-4xl md:text-2xl sm:text-xl text-lg">
+        <p class="flex">
+            <span class="text-indigo-500 roboto-bold mr-2">#</span>
+            <span class="roboto-light">Conoce donde se</span> 
+        </p>
+        <p class="flex">
+            <span class="font-semibold ml-5">encuentra</span>
+            <span class="text-indigo-500 font-semibold mx-2">tu pedido</span>
+        </p>     
+    </div>
+
+    <!-- BUSCADOR DE PEDIDO ----------------------------- -->
+
+    <div class="flex flex-wrap justify-center xl:my-10 my-3 lg:mx-72 md:mx-32 sm:mx-20 mx-8">
+
+        <div class="my-2 w-full xl:w-1/4">
+            <div class="bg-white rounded-lg shadow-[0px_0px_25px_0px_#a3a3a3] mx-5">
+                <input [(ngModel)]="numeroDocumento" id="numeroDocumento" class="bg-transparent outline-none px-2 py-1 roboto-regular" type="text" placeholder="Numero de Documento">
+            </div>
+        </div>
+
+        <div class="my-2 w-full xl:w-1/4">
+            <div class="bg-white rounded-lg shadow-[0px_0px_25px_0px_#a3a3a3] mx-5">
+                <input [(ngModel)]="idPedido" id="idPedido"  class="bg-transparent outline-none px-2 py-1 roboto-regular" type="text" placeholder="Codigo de Pedido">
+            </div>
+        </div>
+
+        <div class="my-2 w-full xl:w-1/4 px-5">
+            <button (click)="buscarPedido()" class="flex bg-amber-500 rounded-lg shadow-[0px_0px_25px_0px_#a3a3a3] w-full justify-center py-1 px-2 text-white roboto-medium">
+                Buscar
+            </button> 
+        </div>
+        
+    </div>
+
+    <div class="flex justify-center my-10">
+        <div *ngIf="cargadatospedido === 'loading'" class=" mt-5 flex justify-center">
+            <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+            </svg>
+        </div>
+        <div *ngIf="cargadatospedido == 'error' ">
+            <p class="text-red-500 roboto-medium">No se encontró el pedido | Intenté nuevamente | Ingresé los datos correctos</p>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR TOTAL DE LA BUSQUEDA ----------------------------------------------------------------- -->
+    <div *ngIf="cargadatospedido === 'done' && pedido">
+            <!-- RESUMEN DE FECHA DE PEDIDO y TIPO ----------------------- -->
+        <div class="grid justify-items-center text-xs">
+            <h5 class="roboto-regular">Estado: <span class="roboto-bold">{{pedido.estado}}</span></h5>
+            <h5 class="roboto-regular">Tipo de Pedido: <span class="roboto-bold">{{pedido.tipoPedido}}</span></h5>
+        </div>
+
+        <!-- CIRCULOS DE PEDIDO -------------------------------- -->
+        <div class="my-10 flex justify-center items-center mx-10">
+            <!-- circulo -->
+            <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lg:w-16 lg:h-16 md:w-12 md:h-12 w-8 h-8 fill-white bg-blue-500 p-2 rounded-full" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+            </div>
+            <svg class="w-32 h-1">
+                <line x1="0" x2="1000" y1="0" y2="0" class="stroke-blue-500 stroke-[20px]" />
+            </svg>
+            <!-- circulo -->
+            <div *ngIf="pedido.idRecojo == null" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'bg-white': envio?.fechaEnvio === null, 'bg-blue-500': envio?.fechaEnvio !== null}" class="lg:w-16 lg:h-16 md:w-12 md:h-12 w-8 h-8 fill-white  p-2 rounded-full" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+            </div>
+            <div *ngIf="pedido.idEnvio == null" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'bg-white': recojo?.fechaListo === null, 'bg-blue-500': recojo?.fechaListo !== null}" class="lg:w-16 lg:h-16 md:w-12 md:h-12 w-8 h-8 fill-white  p-2 rounded-full" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+            </div>
+            <svg *ngIf="pedido.idRecojo == null" class="w-32 h-1">
+                <line x1="0" x2="1000" y1="0" y2="0" [ngClass]="{'stroke-white': envio?.fechaEntrega === null, 'stroke-blue-500': envio?.fechaEntrega !== null}" class=" stroke-[20px]" />
+            </svg>
+            <svg *ngIf="pedido.idEnvio == null" class="w-32 h-1">
+                <line x1="0" x2="1000" y1="0" y2="0" [ngClass]="{'stroke-white': recojo?.fechaEntrega === null, 'stroke-blue-500': recojo?.fechaEntrega !== null}" class=" stroke-[20px]" />
+            </svg>
+            <!-- circulo -->
+            <div *ngIf="pedido.idRecojo == null" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'bg-white': envio?.fechaEntrega === null, 'bg-blue-500': envio?.fechaEntrega !== null}" class="lg:w-16 lg:h-16 md:w-12 md:h-12 w-8 h-8 fill-white  p-2 rounded-full" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+            </div>
+            <div *ngIf="pedido.idEnvio == null" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'bg-white': recojo?.fechaEntrega === null, 'bg-blue-500': recojo?.fechaEntrega !== null}" class="lg:w-16 lg:h-16 md:w-12 md:h-12 w-8 h-8 fill-white  p-2 rounded-full" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+            </div>
+        </div>
+
+        <!-- FECHAS DE PEDIDO ------------------------ -->
+        <section class="flex justify-center lg:text-sm text-xs mx-3">
+            <div class="text-center mx-5">
+                <h5 class="roboto-black">FECHA DE PEDIDO</h5>
+                <p class="my-1 roboto-regular">{{pedido.fechaPedido | date: 'dd/MM/yyyy, HH:mm' }}</p>
+            </div>
+
+            <div *ngIf="pedido.idRecojo == null" class="text-center lg:mx-14 mx-8">
+                <h5 class="roboto-black">FECHA DE ENVIO</h5>
+                <p class="my-1 roboto-regular">{{envio?.fechaEnvio ? (envio?.fechaEnvio | date: 'dd/MM/yyyy, HH:mm') : 'AÚN NO SE ENVIO'}}</p>
+            </div>
+
+            <div *ngIf="pedido.idEnvio == null" class="text-center lg:mx-14 mx-8">
+                <h5 class="roboto-black">FECHA DE PEDIDO LISTO</h5>
+                <p class="my-1 roboto-regular">{{recojo?.fechaListo ? (recojo?.fechaListo | date: 'dd/MM/yyyy, HH:mm') : 'AÚN NO SE ESTA LISTO'}}</p>
+            </div>
+
+            <div *ngIf="pedido.idRecojo == null" class="text-center mx-5">
+                <h5 class="roboto-black">FECHA DE ENTREGA</h5>
+                <p class="my-1 roboto-regular">{{envio?.fechaEntrega ? (envio?.fechaEntrega | date: 'dd/MM/yyyy, HH:mm') : 'AÚN NO SE ENTREGO'}}</p>
+            </div>
+
+            <div *ngIf="pedido.idEnvio == null" class="text-center mx-5">
+                <h5 class="roboto-black">FECHA DE ENTREGA</h5>
+                <p class="my-1 roboto-regular">{{recojo?.fechaEntrega ? (recojo?.fechaEntrega | date: 'dd/MM/yyyy, HH:mm') : 'AÚN NO SE ENTREGO'}}</p>
+            </div>
+        </section>
+        
+        <!-- TRES CONTENEDORES CLIENTE, ORDEN Y LUGAR ------------------ -->
+        <section class="my-5 xl:mx-72 lg:mx-52 md:mx-20 sm:mx-16 mx-3 flex lg:text-base text-xs flex-wrap">
+
+            <div class="w-full flex bg-white rounded-lg p-2 shadow-[0px_0px_25px_0px_#a3a3a3] mb-3">
+                <div class="flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-amber-500 lg:w-8 lg:h-8 w-6 h-6" viewBox="0 -960 960 960"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+                </div>
+                <div class="flex text-black items-center flex-wrap ">
+                    <h5 class=""><span class="roboto-medium mx-2">CLIENTE:</span> <span class="roboto-regular">{{cliente?.razonSocial}}</span></h5>
+                    <h5 class=""><span class="roboto-medium mx-2">DNI:</span> <span class="roboto-regular">{{cliente?.numeroDocumento}}</span></h5>
+                    <h5 class=" my-1"><span class="roboto-medium mx-2">CONTACTO:</span><span class="roboto-regular">{{cliente?.telefonoMovil}}, {{cliente?.email}}</span></h5>
+                </div>
+            </div>
+
+            <div class="w-full flex bg-white rounded-lg p-2 shadow-[0px_0px_25px_0px_#a3a3a3] mb-3">
+                <div class="flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-amber-500 lg:w-8 lg:h-8 w-6 h-6" viewBox="0 -960 960 960"><path d="M160-160v-516L82-846l72-34 94 202h464l94-202 72 34-78 170v516H160Zm240-280h160q17 0 28.5-11.5T600-480q0-17-11.5-28.5T560-520H400q-17 0-28.5 11.5T360-480q0 17 11.5 28.5T400-440ZM240-240h480v-358H240v358Zm0 0v-358 358Z"/></svg>
+                </div>
+                <div class="flex text-black items-center flex-wrap ">
+                    <h5 class=""><span class="roboto-medium mx-2">TOTAL:</span> <span class="roboto-regular">S/.{{pedido.total | number: '1.2-2'}}</span></h5>
+                    <h5 class=""><span class="roboto-medium mx-2">ID PEDIDO:</span> <span class="roboto-regular">{{pedido.idPedido}}</span></h5>
+                </div>
+            </div>
+
+            <div *ngIf="pedido.idRecojo == null" class="w-full flex bg-white rounded-lg p-2 shadow-[0px_0px_25px_0px_#a3a3a3] mb-3">
+                <div class="flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-amber-500 lg:w-8 lg:h-8 w-6 h-6" viewBox="0 -960 960 960"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg>
+                </div>
+                <div class="flex text-black items-center flex-wrap ">
+                    <h5 class=""><span class="roboto-medium mx-2">DESTINO:</span> <span class="roboto-regular">{{envio?.region}}, {{envio?.provincia}}, {{envio?.distrito}}</span></h5>
+                    <h5 class=" my-1"><span class="roboto-medium mx-2">LOCALIDAD:</span> <span class="roboto-regular">{{envio?.calle}}</span></h5>
+                    <h5 class=""><span class="roboto-medium mx-2">DOMICILIO:</span> <span class="roboto-regular">{{envio?.nDomicilio}}</span></h5>
+                </div>
+            </div>
+            <div *ngIf="pedido.idRecojo == null" class="w-full flex bg-white rounded-lg p-2 shadow-[0px_0px_25px_0px_#a3a3a3] mb-3">
+                <div class="flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-amber-500 lg:w-8 lg:h-8 w-6 h-6" viewBox="0 -960 960 960"><path d="M360-390q-21 0-35.5-14.5T310-440q0-21 14.5-35.5T360-490q21 0 35.5 14.5T410-440q0 21-14.5 35.5T360-390Zm240 0q-21 0-35.5-14.5T550-440q0-21 14.5-35.5T600-490q21 0 35.5 14.5T650-440q0 21-14.5 35.5T600-390ZM480-160q134 0 227-93t93-227q0-24-3-46.5T786-570q-21 5-42 7.5t-44 2.5q-91 0-172-39T390-708q-32 78-91.5 135.5T160-486v6q0 134 93 227t227 93Zm0 80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-54-715q42 70 114 112.5T700-640q14 0 27-1.5t27-3.5q-42-70-114-112.5T480-800q-14 0-27 1.5t-27 3.5ZM177-581q51-29 89-75t57-103q-51 29-89 75t-57 103Zm249-214Zm-103 36Z"/></svg>
+                </div>
+                <div class="flex text-black items-center flex-wrap ">
+                    <h5 class=""><span class="roboto-medium mx-2">RESPONSABLE DE ENTREGA</span> <span class="roboto-regular">{{ envio?.responsableEntrega || cliente?.razonSocial }}</span></h5>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CONTENEDOR DE FECHA DE CANCELAR PEDIDO ------------------- -->
+        <section class="xl:mx-72 lg:mx-52 md:mx-20 sm:mx-16 mx-3 lg:text-base text-xs">
+            <div class="flex text-sm text-black bg-white rounded-lg p-2 items-center shadow-[0px_0px_25px_0px_#a3a3a3]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="fill-black lg:w-8 lg:h-8 w-6 h-6" viewBox="0 -960 960 960"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                <h5 class=""><span class="roboto-medium mx-2">FECHA CANCELADO:</span>{{pedido?.fechaCancelado ? (pedido?.fechaCancelado | date: 'dd/MM/yyyy, HH:mm') : 'PEDIDO EN CURSO'}}</h5>
+            </div>
+        </section>
+
+        <p *ngIf="pedido.fechaCancelado == null" class="xl:mx-72 lg:mx-52 md:mx-20 sm:mx-16 mx-3 my-3 text-justify"><span class="roboto-bold text-[0.7rem]">EL PEDIDO  ANDA EN CURSO.</span> <span class="text-xs roboto-regular"> Si desea Cancelar. Recuerde Hacerlo en el plazo de  24 horas desde  la fecha de Compra, por medio  del Whatsapp.</span></p>
+
+        <!-- TITULO LISTA DE PRODUCTOS ---------------- -->
+
+        <div class="xl:mx-72 lg:mx-52 md:mx-20 sm:mx-16 mx-3 my-3">
+            <hr class="border-black">
+        </div>
+        <p class="flex lg:mx-72 md:mx-20 sm:mx-16 mx-3 my-3 roboto-medium">
+            <span class="">Productos</span>
+            <span class="text-indigo-500 mx-2">de tu Pedido</span>
+        </p> 
+         
+        <!-- LISTA DE PRODUCTOPS DE COMPRA -------------------------- -->
+        
+        <section class="xl:mx-72 lg:mx-52 md:mx-20 sm:mx-16 mx-3">
+
+            <div *ngFor="let detalle of detallesPedido" class="grid grid-cols-3 grid-rows-2 bg-white rounded-lg p-3 text-sm mb-5 shadow-[0px_0px_25px_0px_#a3a3a3] ">
+                <div class="col-start-1 col-end-4 row-start-1 row-end-2">
+                    <div class="flex items-center">
+                        <P class=" text-[0.7rem] roboto-regular"><span class="roboto-medium line-clamp-1">{{ detalle.producto.productoNombre || 'Producto no encontrado'  }}</span> X <span class="roboto-medium">{{detalle.cantidad}}</span> Unidades</P>
+                    </div>
+                </div>
+
+                <div class="col-start-1 col-end-4 row-start-2 row-end-3">
+                    <div class=" flex text-xs my-1">
+                        <p class=""><span class="roboto-medium">PRECIO: </span><span class="mx-2 roboto-regular">S/. {{ detalle.precioUnitario | number: '1.2-2' }} </span></p>
+                        <p *ngIf="detalle.precioDescuento !== null && detalle.precioDescuento !== undefined" class="">
+                            <span class="text-red-500 roboto-medium">OFERTA:</span>
+                            <span class="text-black mx-2 roboto-regular">{{ detalle.precioDescuento | number: '1.2-2'  }}</span>
+                        </p>
+                    </div>
+                    <div>
+                        
+                    </div>
+                    <div class="text-xs">
+                        <p class=""><span class="roboto-medium">SUBTOTAL: </span><span class="mx-2 roboto-regular">S/. {{ detalle.subtotal | number: '1.2-2'}}</span></p>
+                    </div> 
+                </div>
+
+                <div class="col-start-4 col-end-5 row-start-1 row-end-3 flex justify-end items-center">
+                    <img class="w-20 h-16 object-cover" src="{{detalle.producto.imagen01}}" alt="">
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- TELEFONO DE AYUDA ---------------- -->
+    <section class="grid justify-end lg:py-5 py-3 xl:mx-72 lg:mx-52 md:mx-20 sm:mx-16 mx-3">
+            <div class="flex ">
+                <div class="lg:text-sm text-xs roboto-light">
+                    <p>¿Necesitas ayuda?</p>
+                    <p>Llámanos al +51 941 992 222</p>
+                </div>
+                <div class="lg:ml-4 ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-black lgw-16 lg:h-16 w-10 h-10" viewBox="0 -960 960 960"><path d="M440-120v-80h320v-284q0-117-81.5-198.5T480-764q-117 0-198.5 81.5T200-484v244h-40q-33 0-56.5-23.5T80-320v-80q0-21 10.5-39.5T120-469l3-53q8-68 39.5-126t79-101q47.5-43 109-67T480-840q68 0 129 24t109 66.5Q766-707 797-649t40 126l3 52q19 9 29.5 27t10.5 38v92q0 20-10.5 38T840-249v49q0 33-23.5 56.5T760-120H440Zm-80-280q-17 0-28.5-11.5T320-440q0-17 11.5-28.5T360-480q17 0 28.5 11.5T400-440q0 17-11.5 28.5T360-400Zm240 0q-17 0-28.5-11.5T560-440q0-17 11.5-28.5T600-480q17 0 28.5 11.5T640-440q0 17-11.5 28.5T600-400Zm-359-62q-7-106 64-182t177-76q89 0 156.5 56.5T720-519q-91-1-167.5-49T435-698q-16 80-67.5 142.5T241-462Z"/></svg>
+                </div>
+            </div>
+    </section>
+</div>
+
+<div>
+    <app-footer></app-footer>
+</div>
+
+<style>
+    .grid-rows-2 {
+  grid-template-rows: min-content min-content;
+}
+</style>
+
+
+  
+
+

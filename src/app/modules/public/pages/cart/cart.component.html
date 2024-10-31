@@ -1,0 +1,121 @@
+<!-- CARRITO DONDE ESTÀ EL PRODUCTO AGREGADO -->
+
+<main class="grid grid-rows-2 grid-cols-7 bg-neutral-300 lg:mt-[4.5rem] sm:mt-14 mt-24 z-0">
+
+    <div class="xl:col-start-1 xl:col-end-2 lg:col-start-1 lg:col-end-2 md:col-start-1 md:col-end-3 sm:col-start-1 sm:col-end-3 col-start-1 col-end-8 sm:row-start-1 sm:row-end-3 row-start-1 row-end-2">
+        <div class="sm:sticky lg:top-[4.5rem] sm:top-14 top-24">
+            <app-sidebar class=""></app-sidebar>
+        </div>
+    </div>
+
+    <div class="xl::mx-20 lg:mx-10 mx-3 xl:col-start-2 xl:col-end-8 lg:col-start-2 lg:col-end-8 md:col-start-3 md:col-end-8 sm:col-start-3 sm:col-end-8 col-start-1 col-end-8 sm:row-start-1 sm:row-end-3 row-start-2 row-end-3">
+        
+        <div class="lg:my-4 mt-2 my-3">
+            <a class="flex items-center" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="fill-black w-5 h-5 hover:mr-5 duration-500" viewBox="0 -960 960 960"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+            </a>
+        </div>
+
+        <p class="lg:text-xl text-sm font-light lg:my-4 my-3">
+            <span class="text-indigo-500 font-bold">#</span>
+            <span class=" mx-2 roboto-light">PRODUCTOS</span>
+            <span class="roboto-bold">AGREGADOS :</span>
+        </p>
+
+        <div class="grid grid-cols-3 grid-rows-2">
+            
+            <section class="lg:col-start-1 lg:col-end-3 col-start-1 col-end-4 lg:row-start-1 lg:row-end-3 row-start-1 row-end-2 mb-5"> 
+
+                <!-- PRODUCTOS --------------------------- -->
+
+                <div class="grid grid-cols-11 grid-rows-1 bg-white rounded-xl lg:mb-4 mb-2 hover:shadow-[0px_0px_25px_0px_#a3a3a3] hover:duration-300" *ngFor="let producto of productos">
+
+                    <a routerLink="/producto/{{producto.idProducto}}" class="col-start-1 col-end-3 row-start-1 row-end-2 grid justify-items-center content-center">
+                        <img class="w-3/4 h-3/4 object-cover lg:m-4 m-2" [src]="producto.imagen01" alt="{{ producto.productoNombre }}">
+                    </a>
+
+                    <div class="col-start-3 col-end-8 row-start-1 row-end-2 grid content-around my-3 ml-3">
+                        <p class=" lg:text-sm text-xs line-clamp-2 roboto-light">{{ producto.productoNombre }}</p>
+                        <p class="font-semibold text-indigo-500 lg:text-base text-xs">S/. {{ producto.precio | number: '1.2-2' }}</p>
+                        <p [ngStyle]="{ visibility: producto.precioOferta ? 'visible' : 'hidden' }" class="text-black text-xs lg:text-sm xl:text-base roboto-regular">Precio Oferta <span class="font-bold text-amber-500 mx-2 lg:text-lg ">S/. {{ producto.precioOferta | number: '1.2-2' }}</span></p>
+                    </div>
+
+                    <div class="col-start-8 col-end-11 row-start-1 row-end-2 content-around grid justify-items-center my-4">
+                        <div class="flex lg:mx-2 mx-1">
+                            <button (click)="menos(producto.idProducto.toString())">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="fill-black stroke-2 w-5 h-5" viewBox="0 -960 960 960">
+                                  <path d="M200-440v-80h560v80H200Z"/>
+                                </svg>
+                              </button>
+                              <input class="roboto-regular xl:text-base lg:text-sm text-xs lg:w-[4.4rem] text-black lg:mx-2 mx-1 w-[2.2rem] lg:pl-6 pl-2" 
+                                     type="number" 
+                                     [value]="cantidades[producto.idProducto.toString()]" 
+                                     readonly>
+                              <button (click)="mas(producto.idProducto.toString())">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="fill-black stroke-2 w-5 h-5" viewBox="0 -960 960 960">
+                                  <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
+                                </svg>
+                              </button>
+                          </div>
+                        <p class="text-xs lg:text-sm roboto-regular">Máximo 5</p>
+                    </div>
+                    
+                    <div class="col-start-11 col-end-12 row-start-1 row-end-2 grid justify-items-end content-start">
+                        <button class="bg-black rounded-tr-xl" (click)="eliminarDelCarrito(producto.idProducto.toString())">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-white lg:w-6 lg:h-6 w-6 h-6 hover:scale-75 hover:duration-300" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lg:col-start-3 lg:col-end-4 col-start-1 col-end-4 lg:row-start-1 lg:row-end-3 row-start-2 row-end-3 lg:ml-10">
+                
+                <div class="">
+                    <div class="bg-black rounded-t-xl">
+                        <h4 class="text-white lg:py-2 py-2 lg:pl-6 pl-3 lg:text-base text-sm sm:px-5 roboto-regular">RESUMEN DE COMPRA:</h4>
+                    </div>
+                    <div class="bg-white lg:p-4 p-2 text-xs lg:text-sm xl:text-base">
+                        <p class="lg:pb-2 pb-1">
+                            <span class="roboto-bold">TOTAL PRODUCTOS: </span>
+                            <span>{{ calcularTotalProductos() }}</span>
+                          </p>
+                        <p><span class="roboto-bold">PRECIO TOTAL:</span> S/. {{ calcularTotal() | number: '1.2-2' }}<span></span></p>
+                    </div>
+                    
+                </div>
+
+                <div class="bg-amber-500 rounded-full flex justify-center lg:my-10 my-5 hover:shadow-[0px_0px_10px_0px_#f59e0b] hover:duration-500 sm:ml-52 md:ml-72 lg:ml-0" (click)="guardarCantidadesEnStorage()" routerLink="/recorrido/cliente">
+                    <a class="text-white font-semibold py-2 text-sm lg:text-lg"> 
+                        CONTINUAR COMPRA
+                    </a>
+                </div>
+
+                <div class="grid justify-end my-3">
+                    <div class="flex ">
+                        <div class="lg:text-sm text-xs roboto-light">
+                            <p>¿Necesitas ayuda?</p>
+                            <p>Llámanos al +51 941 992 222</p>
+                        </div>
+                        <div class="lg:ml-4 ml-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-black lgw-16 lg:h-16 w-10 h-10" viewBox="0 -960 960 960"><path d="M440-120v-80h320v-284q0-117-81.5-198.5T480-764q-117 0-198.5 81.5T200-484v244h-40q-33 0-56.5-23.5T80-320v-80q0-21 10.5-39.5T120-469l3-53q8-68 39.5-126t79-101q47.5-43 109-67T480-840q68 0 129 24t109 66.5Q766-707 797-649t40 126l3 52q19 9 29.5 27t10.5 38v92q0 20-10.5 38T840-249v49q0 33-23.5 56.5T760-120H440Zm-80-280q-17 0-28.5-11.5T320-440q0-17 11.5-28.5T360-480q17 0 28.5 11.5T400-440q0 17-11.5 28.5T360-400Zm240 0q-17 0-28.5-11.5T560-440q0-17 11.5-28.5T600-480q17 0 28.5 11.5T640-440q0 17-11.5 28.5T600-400Zm-359-62q-7-106 64-182t177-76q89 0 156.5 56.5T720-519q-91-1-167.5-49T435-698q-16 80-67.5 142.5T241-462Z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>  
+
+    </div>
+    
+</main>
+
+<footer>
+    <app-footer></app-footer>
+</footer>
+
+<style>
+    .grid-rows-2 {
+        grid-template-rows: min-content min-content;
+    }
+</style>
